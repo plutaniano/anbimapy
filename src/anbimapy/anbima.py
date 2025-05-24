@@ -22,10 +22,15 @@ class Anbima(httpx.Client):
             "api-sandbox.anbima.com.br",
         ] = "api.anbima.com.br",
     ) -> None:
-        super().__init__(base_url=f"https://{host}")
-
         self.client_id = client_id
         self.client_secret = client_secret
+
+        super().__init__(
+            base_url=f"https://{host}",
+            headers={
+                "client_id": self.client_id,
+            },
+        )
 
         self.precos = PrecosModule(self)
 
@@ -39,4 +44,4 @@ class Anbima(httpx.Client):
         )
         response.raise_for_status()
         body: AccessToken = response.json()
-        self.headers["Authorization"] = f"Bearer {body['access_token']}"
+        self.headers["access_token"] = body["access_token"]

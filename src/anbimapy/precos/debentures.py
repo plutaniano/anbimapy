@@ -45,7 +45,7 @@ class Projecao(TypedDict):
 class DebenturesModule(Module):
     def curvas_de_credito(self, data: dt.date) -> list[CurvaDeCredito]:
         response = self.http.get(
-            url="/v1/debentures/curvas-credito",
+            url="/feed/precos-indices/v1/debentures/curvas-credito",
             params={
                 "data": f"{data:%Y-%m-%d}",
             },
@@ -55,7 +55,7 @@ class DebenturesModule(Module):
 
     def mercado_secundario(self, data: dt.date) -> list[MercadoSecundario]:
         response = self.http.get(
-            url="/v1/debentures/mercado-secundario",
+            url="/feed/precos-indices/v1/debentures/mercado-secundario",
             params={
                 "data": f"{data:%Y-%m-%d}",
             },
@@ -65,7 +65,7 @@ class DebenturesModule(Module):
 
     def projecoes(self, mes: dt.date) -> list[Projecao]:
         response = self.http.get(
-            url="/v1/debentures/projecoes",
+            url="/feed/precos-indices/v1/debentures/projecoes",
             params={
                 "ano": mes.year,
                 "mes": mes.month,
