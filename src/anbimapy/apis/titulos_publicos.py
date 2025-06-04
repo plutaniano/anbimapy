@@ -1,12 +1,77 @@
 import datetime as dt
+from typing import TYPE_CHECKING
 
-from anbimapy.module import Module
+if TYPE_CHECKING:
+    from anbimapy.anbima import Anbima
 
 
-class ResultadosModule(Module):
+class TitulosPublicos:
+    def __init__(self, http: "Anbima") -> None:
+        self.http = http
+
+    def curva_intradiaria(self, data: dt.date) -> ...:
+        response = self.http.get(
+            url="/precos-indices/v1/titulos-publicos/curva-intradiaria",
+            params={
+                "data": f"{data:%Y-%m-%d}",
+            },
+        )
+        response.raise_for_status()
+        return response.json()
+
+    def curvas_juros(self, data: dt.date) -> ...:
+        response = self.http.get(
+            url="/precos-indices/v1/titulos-publicos/curvas-juros",
+            params={
+                "data": f"{data:%Y-%m-%d}",
+            },
+        )
+        response.raise_for_status()
+        return response.json()
+
+    def difusao_taxas(self, data: dt.date) -> ...:
+        response = self.http.get(
+            url="/precos-indices/v1/titulos-publicos/difusao-taxas",
+            params={
+                "data": f"{data:%Y-%m-%d}",
+            },
+        )
+        response.raise_for_status()
+        return response.json()
+
+    def estimativa_selic(self, data: dt.date) -> ...:
+        response = self.http.get(
+            url="/precos-indices/v1/titulos-publicos/estimativa-selic",
+            params={
+                "data": f"{data:%Y-%m-%d}",
+            },
+        )
+        response.raise_for_status()
+        return response.json()
+
+    def mercado_secundario_tpf(self, data: dt.date) -> ...:
+        response = self.http.get(
+            url="/precos-indices/v1/titulos-publicos/mercado-secundario-TPF",
+            params={
+                "data": f"{data:%Y-%m-%d}",
+            },
+        )
+        response.raise_for_status()
+        return response.json()
+
+    def projecoes(self, data: dt.date) -> ...:
+        response = self.http.get(
+            url="/precos-indices/v1/titulos-publicos/projecoes",
+            params={
+                "data": f"{data:%Y-%m-%d}",
+            },
+        )
+        response.raise_for_status()
+        return response.json()
+
     def pu_intradiario(self, data: dt.date) -> ...:
         response = self.http.get(
-            url="/v1/indices-mais/pu-intradiario",
+            url="/precos-indices/v1/titulos-publicos/pu-intradiario",
             params={
                 "data": f"{data:%Y-%m-%d}",
             },
@@ -14,89 +79,9 @@ class ResultadosModule(Module):
         response.raise_for_status()
         return response.json()
 
-    def ida_fechado(self, data: dt.date) -> ...:
+    def vna(self, data: dt.date) -> ...:
         response = self.http.get(
-            url="/v1/indices/resultados-ida-fechado",
-            params={
-                "data": f"{data:%Y-%m-%d}",
-            },
-        )
-        response.raise_for_status()
-        return response.json()
-
-    def ida_mais(self, data: dt.date) -> ...:
-        response = self.http.get(
-            url="/v1/indices-mais/resultados-ida",
-            params={
-                "data": f"{data:%Y-%m-%d}",
-            },
-        )
-        response.raise_for_status()
-        return response.json()
-
-    def idka(self, data: dt.date) -> ...:
-        response = self.http.get(
-            url="/v1/indices/resultados-idka",
-            params={
-                "data": f"{data:%Y-%m-%d}",
-            },
-        )
-        response.raise_for_status()
-        return response.json()
-
-    def idka_mais(self, data: dt.date) -> ...:
-        response = self.http.get(
-            url="/v1/indices-mais/resultados-idka",
-            params={
-                "data": f"{data:%Y-%m-%d}",
-            },
-        )
-        response.raise_for_status()
-        return response.json()
-
-    def ihfa_fechado(self, data: dt.date) -> ...:
-        response = self.http.get(
-            url="/v1/indices/resultados-ihfa-fechado",
-            params={
-                "data": f"{data:%Y-%m-%d}",
-            },
-        )
-        response.raise_for_status()
-        return response.json()
-
-    def ihfa_mais(self, data: dt.date) -> ...:
-        response = self.http.get(
-            url="/v2/indices-mais/resultados-ihfa",
-            params={
-                "data": f"{data:%Y-%m-%d}",
-            },
-        )
-        response.raise_for_status()
-        return response.json()
-
-    def ima(self, data: dt.date) -> ...:
-        response = self.http.get(
-            url="/v1/indices/resultados-ima",
-            params={
-                "data": f"{data:%Y-%m-%d}",
-            },
-        )
-        response.raise_for_status()
-        return response.json()
-
-    def ima_mais(self, data: dt.date) -> ...:
-        response = self.http.get(
-            url="/v1/indices-mais/resultados-ima",
-            params={
-                "data": f"{data:%Y-%m-%d}",
-            },
-        )
-        response.raise_for_status()
-        return response.json()
-
-    def ima_intradiario(self, data: dt.date) -> ...:
-        response = self.http.get(
-            url="/v1/indices-mais/resultados-intradiarios-ima",
+            url="/precos-indices/v1/titulos-publicos/vna",
             params={
                 "data": f"{data:%Y-%m-%d}",
             },
