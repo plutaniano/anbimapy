@@ -1,8 +1,50 @@
 import datetime as dt
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, TypedDict, NotRequired, List
 
 if TYPE_CHECKING:
     from anbimapy.anbima import Anbima
+
+
+class Componente(TypedDict):
+    tipo_titulo: str
+    data_vencimento: str
+    codigo_selic: str
+    codigo_isin: str
+    taxa_indicativa: NotRequired[float]
+    pu: float
+    pu_juros: float
+    quantidade_componentes: float
+    quantidade_teorica: float
+    valor_mercado: NotRequired[float]
+    peso_componente: NotRequired[float]
+    prazo_vencimento: NotRequired[int]
+    duration: NotRequired[float]
+    pmr: float
+    convexidade: float
+
+
+ResultadoIma = TypedDict(
+    "ResultadoIma",
+    {
+        "indice": str,
+        "data_referencia": str,
+        "variacao_ult12m": float,
+        "variacao_ult24m": float,
+        "numero_indice": float,
+        "variacao_diaria": float,
+        "variacao_anual": float,
+        "variacao_mensal": float,
+        "peso_indice": NotRequired[float],
+        "quantidade_titulos": float,
+        "valor_mercado": float,
+        "pmr": float,
+        "convexidade": NotRequired[float],
+        "duration": float,
+        "yield": NotRequired[float],
+        "redemption_yield": NotRequired[float],
+        "componentes": List[Componente],
+    },
+)
 
 
 class ResultadosMais:
@@ -39,7 +81,7 @@ class ResultadosMais:
         response.raise_for_status()
         return response.json()
 
-    def ima(self, data: dt.date) -> None:
+    def ima(self, data: dt.date) -> ResultadoIma:
         response = self.http.get(
             url="/precos-indices/v1/indices-mais/resultados-ima",
             params={

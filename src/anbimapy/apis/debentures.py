@@ -1,15 +1,23 @@
 import datetime as dt
-from typing import TYPE_CHECKING
+from typing import TYPE_CHECKING, TypedDict
 
 if TYPE_CHECKING:
     from anbimapy.anbima import Anbima
+
+
+class CurvaCredito(TypedDict):
+    a: float
+    aa: float
+    aaa: float
+    data_referencia: str
+    vertice_anos: float
 
 
 class Debentures:
     def __init__(self, http: "Anbima") -> None:
         self.http = http
 
-    def curvas_credito(self, data: dt.date) -> None:
+    def curvas_credito(self, data: dt.date) -> CurvaCredito:
         response = self.http.get(
             url="/precos-indices/v1/debentures/curvas-credito",
             params={
