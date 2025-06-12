@@ -9,7 +9,7 @@ class CriCra:
     def __init__(self, http: "Anbima") -> None:
         self.http = http
 
-    def mercado_secundario(self, data: dt.date) -> None:
+    def mercado_secundario(self, data: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/cri-cra/mercado-secundario",
             params={
@@ -19,7 +19,7 @@ class CriCra:
         response.raise_for_status()
         return response.json()
 
-    def projecoes(self, month: dt.date) -> None:
+    def projecoes(self, month: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/cri-cra/projecoes",
             params={

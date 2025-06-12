@@ -9,7 +9,7 @@ class Reune:
     def __init__(self, http: "Anbima") -> None:
         self.http = http
 
-    def previas(self, data: dt.date, instrumento: str, faixa: str = "24:00") -> None:
+    def previas(self, data: dt.date, instrumento: str, faixa: str = "24:00") -> ...:
         response = self.http.get(
             url="/precos-indices/v1/reune/previas-do-reune",
             params={

@@ -9,7 +9,7 @@ class LetrasFinanceiras:
     def __init__(self, http: "Anbima") -> None:
         self.http = http
 
-    def matrizes_vertices_emissor(self, tipo_lf: Iterable[str], data: dt.date) -> None:
+    def matrizes_vertices_emissor(self, tipo_lf: Iterable[str], data: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/letras-financeiras/matrizes-vertices-emissor",
             params={

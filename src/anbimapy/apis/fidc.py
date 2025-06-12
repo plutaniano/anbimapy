@@ -9,7 +9,7 @@ class Fidc:
     def __init__(self, http: "Anbima") -> None:
         self.http = http
 
-    def mercado_secundario(self, data: dt.date) -> None:
+    def mercado_secundario(self, data: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/fidc/mercado-secundario",
             params={

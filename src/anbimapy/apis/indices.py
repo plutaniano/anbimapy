@@ -12,7 +12,7 @@ class Resultados:
     def __init__(self, http: "Anbima") -> None:
         self.http = http
 
-    def ida_fechado(self, data: dt.date) -> None:
+    def ida_fechado(self, data: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/indices/resultados-ida-fechado",
             params={
@@ -22,7 +22,7 @@ class Resultados:
         response.raise_for_status()
         return response.json()
 
-    def idka(self, data: dt.date) -> None:
+    def idka(self, data: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/indices/resultados-idka",
             params={
@@ -32,7 +32,7 @@ class Resultados:
         response.raise_for_status()
         return response.json()
 
-    def ihfa_fechado(self, data: dt.date) -> None:
+    def ihfa_fechado(self, data: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/indices/resultados-ihfa-fechado",
             params={
@@ -42,7 +42,7 @@ class Resultados:
         response.raise_for_status()
         return response.json()
 
-    def ima(self, data: dt.date) -> None:
+    def ima(self, data: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/indices/resultados-ima",
             params={
@@ -52,7 +52,7 @@ class Resultados:
         response.raise_for_status()
         return response.json()
 
-    def ima_intradiarios(self, data: dt.date) -> None:
+    def ima_intradiarios(self, data: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/indices/resultados-intradiarios-ima",
             params={

@@ -9,7 +9,7 @@ class IdaLiq:
     def __init__(self, http: "Anbima") -> None:
         self.http = http
 
-    def carteira_ida(self, month: dt.date) -> None:
+    def carteira_ida(self, month: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/ida-liq/carteira-teorica-ida",
             params={
@@ -20,7 +20,7 @@ class IdaLiq:
         response.raise_for_status()
         return response.json()
 
-    def carteira_ida_previa(self, month: dt.date) -> None:
+    def carteira_ida_previa(self, month: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/ida-liq/previa-carteira-teorica-ida",
             params={
@@ -31,7 +31,7 @@ class IdaLiq:
         response.raise_for_status()
         return response.json()
 
-    def resultados_ida(self, data: dt.date) -> None:
+    def resultados_ida(self, data: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/ida-liq/resultados-ida",
             params={

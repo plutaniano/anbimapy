@@ -27,7 +27,7 @@ class Debentures:
         response.raise_for_status()
         return response.json()
 
-    def mercado_secundario(self, data: dt.date) -> None:
+    def mercado_secundario(self, data: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/debentures/mercado-secundario",
             params={
@@ -37,7 +37,7 @@ class Debentures:
         response.raise_for_status()
         return response.json()
 
-    def projecoes(self, data: dt.date) -> None:
+    def projecoes(self, data: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/debentures/projecoes",
             params={

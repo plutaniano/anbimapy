@@ -51,7 +51,7 @@ class ResultadosMais:
     def __init__(self, http: "Anbima") -> None:
         self.http = http
 
-    def ida(self, data: dt.date) -> None:
+    def ida(self, data: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/indices-mais/resultados-ida",
             params={
@@ -61,7 +61,7 @@ class ResultadosMais:
         response.raise_for_status()
         return response.json()
 
-    def idka(self, data: dt.date) -> None:
+    def idka(self, data: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/indices-mais/resultados-idka",
             params={
@@ -71,7 +71,7 @@ class ResultadosMais:
         response.raise_for_status()
         return response.json()
 
-    def ihfa(self, data: dt.date) -> None:
+    def ihfa(self, data: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v2/indices-mais/resultados-ihfa",
             params={
@@ -91,7 +91,7 @@ class ResultadosMais:
         response.raise_for_status()
         return response.json()
 
-    def ima_intradiarios(self, data: dt.date) -> None:
+    def ima_intradiarios(self, data: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/indices-mais/resultados-intradiarios-ima",
             params={
@@ -106,7 +106,7 @@ class CarteirasMais:
     def __init__(self, http: "Anbima") -> None:
         self.http = http
 
-    def ida_previa(self, month: dt.date) -> None:
+    def ida_previa(self, month: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/indices-mais/previa-carteira-teorica-ida",
             params={
@@ -117,7 +117,7 @@ class CarteirasMais:
         response.raise_for_status()
         return response.json()
 
-    def ida(self, month: dt.date) -> None:
+    def ida(self, month: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/indices-mais/carteira-teorica-ida",
             params={
@@ -128,7 +128,7 @@ class CarteirasMais:
         response.raise_for_status()
         return response.json()
 
-    def ihfa(self, month: dt.date) -> None:
+    def ihfa(self, month: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v2/indices-mais/carteira-teorica-ihfa",
             params={
@@ -139,7 +139,7 @@ class CarteirasMais:
         response.raise_for_status()
         return response.json()
 
-    def ima(self, month: dt.date) -> None:
+    def ima(self, month: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/indices-mais/carteira-teorica-ima",
             params={
@@ -150,7 +150,7 @@ class CarteirasMais:
         response.raise_for_status()
         return response.json()
 
-    def ima_previa(self, month: dt.date) -> None:
+    def ima_previa(self, month: dt.date) -> ...:
         response = self.http.get(
             url="/precos-indices/v1/indices-mais/previa-carteira-teorica-ima",
             params={
