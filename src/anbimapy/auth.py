@@ -20,10 +20,10 @@ class AnbimaAuth(httpx.Auth):
         self.client_id = client_id
         self.client_secret = client_secret
         self.access_token = ""
-        self.expires_at = dt.datetime.min.replace(tzinfo=dt.UTC)
+        self.expires_at = dt.datetime.min.replace(tzinfo=dt.timezone.utc)
 
     def should_refresh(self) -> bool:
-        return self.expires_at < (dt.datetime.now(dt.UTC) + dt.timedelta(minutes=3))
+        return self.expires_at < (dt.datetime.now(dt.timezone.utc) + dt.timedelta(minutes=3))
 
     def auth_flow(self, request: Request) -> Generator[Request, Response, None]:
         if self.should_refresh():
@@ -49,4 +49,4 @@ class AnbimaAuth(httpx.Auth):
         body: AccessToken = response.json()
 
         self.access_token = body["access_token"]
-        self.expires_at = dt.datetime.now(dt.UTC) + dt.timedelta(seconds=body["expires_in"])
+        self.expires_at = dt.datetime.now(dt.timezone.utc) + dt.timedelta(seconds=body["expires_in"])

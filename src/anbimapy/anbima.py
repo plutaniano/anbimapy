@@ -20,10 +20,7 @@ class Anbima(httpx.Client):
         client_id: str,
         client_secret: str,
         *,
-        host: Literal[
-            "api.anbima.com.br",
-            "api-sandbox.anbima.com.br",
-        ] = "api.anbima.com.br",
+        host: Literal["api.anbima.com.br", "api-sandbox.anbima.com.br"] = "api.anbima.com.br",
     ) -> None:
         self.client_id = client_id
         self.client_secret = client_secret

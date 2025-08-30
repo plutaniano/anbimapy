@@ -1,5 +1,7 @@
 import datetime as dt
-from typing import TYPE_CHECKING, TypedDict, NotRequired, List
+from typing import TYPE_CHECKING, List, TypedDict
+
+from typing_extensions import NotRequired
 
 if TYPE_CHECKING:
     from anbimapy.anbima import Anbima

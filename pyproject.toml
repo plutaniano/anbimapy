@@ -9,6 +9,7 @@ authors = [
 requires-python = ">=3.9"
 dependencies = [
     "httpx>=0.22",
+    "typing-extensions>=4.13.2",
 ]
 
 [build-system]
@@ -49,4 +50,8 @@ select = [
     "TID",  # flake8-tidy-imports
     "UP",   # pyupgrade
     "W",    # pycodestyle-warning
+]
+
+ignore = [
+    "UP006", "UP035", # permite uso de List
 ]
