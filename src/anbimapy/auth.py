@@ -1,6 +1,7 @@
 import datetime as dt
 from base64 import b64encode
-from typing import Generator, Literal, TypedDict
+from collections.abc import Generator
+from typing import Literal, TypedDict
 
 import httpx
 from httpx import Request, Response
@@ -9,7 +10,7 @@ from httpx import Request, Response
 class AccessToken(TypedDict):
     token_type: Literal["access_token"]
     access_token: str
-    expires_int: int
+    expires_in: int
 
 
 class AnbimaAuth(httpx.Auth):
@@ -46,4 +47,6 @@ class AnbimaAuth(httpx.Auth):
         )
         response.raise_for_status()
         body: AccessToken = response.json()
+
         self.access_token = body["access_token"]
+        self.expires_at = dt.datetime.now(dt.UTC) + dt.timedelta(seconds=body["expires_in"])
